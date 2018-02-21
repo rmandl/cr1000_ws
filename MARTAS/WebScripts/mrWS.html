@@ -1,0 +1,42 @@
+<h1>Real Time</h1>
+<script type="text/javascript">
+    var connection=new WebSocket('ws://127.0.0.1:5000/')
+    var sensorlist = [];
+    
+    console.log("TestHello");
+
+    connection.onmessage = function (e) {
+        console.log('geht jo: ' + e.data);
+        document.getElementById('grrr').innerHTML = e.data;
+        var z=document.getElementById("tab");
+        z.insertRow(2);
+        var x = document.createElement('td');
+        x.innerHTML="NEU:-)";
+        //z.appendChild(x);
+
+    };
+    connection.onopen = function (){
+        console.log('offen samma: ');
+    };
+    connection.onerror = function (error){
+        console.log('error: ' + error);
+        connection.close();
+    };
+    var text=window.location;
+    text="a?b"
+    text=window.location.toString();
+    ar=text.split('?');
+    document.write(ar[1]);
+
+console.log("das wars?");
+</script>
+<table id="tab" class="tablegv" style="width: 1000px;">
+<tbody>
+<tr class="tablegvHeader">
+<td colspan="0"><center>Status</center></td>
+</tr>
+<tr>
+<td id="grrr"></td>
+</tr>
+</tbody>
+</table>
